@@ -1,0 +1,31 @@
+Fait : 
+	- connexion bdd
+	- insertion user
+	- authentification
+	- récupération d'alertes
+	- vue authentification
+	- vue création compte
+	- vue Map de base
+	- vue paramètres 
+	- vue trajet
+	- vue placement alerte(modif)
+
+Reste à faire / en cours :
+	- insertion des alertes (Frane Serveur 85%, Alex Client 90%)
+	- affichage des alertes (Alex/David Client 75%)
+	- affichage trajet (Alex/David Client 100%)
+	- recentrer la vue(Alex/David Client) 0% 
+	- rafraichissement des alertes (Alex 0%/Frane 35%/David Client 0%)
+
+Alex :  - insertion des alertes 
+  	- affichage des alertes
+	- recentrer vue(Bouton)
+	- rafraichissement (timeout + appel)
+
+David : - recentrer vue (côté JS)
+	- rafraichissement (suppression alertes)
+
+Frane : - insertion des alertes (PHP)
+	- rafraichissment des alertes (Delete & Select)
+
+Prochaine réunion : week end du 7/8 janvier 2017

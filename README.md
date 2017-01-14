@@ -22,16 +22,10 @@ L'application effectue des appels AJAX pour requêter l'API Google MAP et le ser
 - Affichage des alertes
 - Paramétrage des types d'alertes à afficher
 
-### Hermetica ###
 
-The diagnostic queries are stored in XML files, inside the `CorpusHermeticum` folder. To add your own query, simply copy an existing xml file and edit it. You need to specify :
+### Non encore implémenté ###
 
-- The `name` of the hermeticus.
-- The `level` : it can be `Server` or `Database`. A Database-level query will be run against all selected databases of your server and produce one result per database. When you write a Database level query, assume it will be run in the context of each database.
-- the `folder`. It is the name of the folder in which the result will appear in the Sql Trismegiste tree view. The folder name must exist in the `Folders.xml` file, inside the `CorpusHermeticum` folder. You can add new folders in this file.
-
-Then, you can write multiple versions of your query, for different versions (MajorVersion) of SQL Server. Sql Trismegiste will choose the query accordingly. It will execute the query defined for the version of SQL server it is connected to, or the closest previous version, or the query marked as `*` for any version. You can write only one query and mark it as `*` if your query is not version-specific.
-
-### Not yet implemented ###
-
-- `Save Sql Text` and `Save Query Plans` is almost done. It can save query plans and sql texts when you check it and Sql Trismegiste sees `plan_handle` or `sql_handle` columns.
+- Historique pour chaque utilisateur
+- Indice de confiance pour chaque utilisateur
+- Google Speech pour suivi de trajet en mode vocal
+- Message de proximité d'une alerte

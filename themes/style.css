@@ -1,0 +1,28 @@
+.icon {
+	float:left;
+	width:2em;
+	height:2em;
+	display:inline-block;
+	margin :0.1em;
+}
+.icone {
+	margin-top : -2px;
+	margin-left: -3px;
+}
+.check {
+	height:2.5em;
+	width:2em;
+}
+#centerbtn {
+	position: absolute;
+	left : 5%;
+	top : 85%;
+
+}
+
+#icons, .validtop, #legend {
+	margin-left : auto;
+	margin-right: auto;
+	text-align: center;
+}
+

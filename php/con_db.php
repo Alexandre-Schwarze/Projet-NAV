@@ -3,8 +3,8 @@
 
 
 	private $dbname = "waze2";
-	private $login_db = "root";
-	private $password_db = "";
+	private $login_db = "waze2";
+	private $password_db = "waze2";
 	private $port = 3306;
 	public $bdd ;
 

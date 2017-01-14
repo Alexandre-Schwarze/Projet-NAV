@@ -10,6 +10,7 @@ var navigation = false;
 var direction;
 var directionsService = new google.maps.DirectionsService();
 var latlng;
+var markers = [];
 var marker = new google.maps.Marker({ 
 	title:'Vous etes ici',
 	icon: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
@@ -17,6 +18,7 @@ var marker = new google.maps.Marker({
 
 function calculate(dest){
 	navigation = true;
+	$("#suivi").attr("checked",false).checkboxradio("refresh");
 	var origin = latitude + ',' + longitude;
 	var destination = dest;
 	direction.setMap(carte);
@@ -55,10 +57,11 @@ function centrer() {
 	latlng = new google.maps.LatLng(latitude, longitude);
 	carte.setCenter(latlng);
 	carte.setZoom(16);
-	navigation = false;
+	//navigation = false;
 }
 
 function genererMap() {
+	first = false;
 	direction = new google.maps.DirectionsRenderer();
 	latlng = new google.maps.LatLng(latitude, longitude);
 	var options = {
@@ -77,22 +80,24 @@ function affichercarte() {
 	latlng = new google.maps.LatLng(latitude, longitude);
 	marker.setPosition(latlng);
 	marker.setMap(carte);
+
+	if (document.getElementById('suivi').checked == true) {
+		navigation = false;
+	} else {
+		navigation = true;
+	}
+
 	if (navigation != true) {
-		// calculate();
 		centrer();
 	}
-	// document.getElementById('latitude1').innerHTML=latitude;
-	// document.getElementById('longitude1').innerHTML=longitude;
-	//pos1 = marker.getCurrentPosition();
 }
-
 
 function geo() {
 	if(navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(
 			geo_ok,
 			geo_error, 
-			{ enableHighAccuracy:true, maximumAge:5000, timeout:5000}
+			{ enableHighAccuracy:true, maximumAge:5000}
 			);
 	} else {
 		alert('Erreur : Pas de support de la géolocalisation dans votre navigateur');
@@ -108,8 +113,9 @@ function geo_ok(position) {
 		first = false;
 		genererMap();
 	}
-
+	load_alertes();
 	setTimeout(geo,2500);
+	//setInterval(geo,2500);
 }
 
 function geo_error(error) {
@@ -123,17 +129,20 @@ function load_alertes() {
 	}, function(result) {
 		var table_alertes = readCookie("types");
 		table_alertes = table_alertes.split(",");
+		for (var i = 0; i < markers.length; i++) {
+			markers[i].setMap(null);
+		}
+		markers = [];
 		if (result != null) {
 			for (var i = 0; i < result.length; i++) {
 				var latlngX = new google.maps.LatLng(result[i].latitude, result[i].longitude);
 				var marker1 = new google.maps.Marker({position: latlngX });
 				marker1.setIcon('themes/images/' + result[i].icon);
-
-				if (table_alertes == null) {
-					marker1.setMap(carte);
-				} else {
+				console.log(table_alertes);
+				if (table_alertes[0] != null) {
 					for (var x = 0; x < table_alertes.length; x++) {
 						if (result[i].nom == table_alertes[x]) {
+							markers.push(marker1);
 							marker1.setMap(carte);
 						}
 					}

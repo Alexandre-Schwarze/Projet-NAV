@@ -26,6 +26,7 @@ type_alerte = null;
 trajet.hide();
 alertes.hide();
 populateparams();
+createCookie("types", "Accident,Bouchon,Radar,Police,Travaux");
 
 // RAFRAICHISSEMENT DE LA PAGE //
 
@@ -55,19 +56,6 @@ populateparams();
 //CARTE //
 geo();
 resize();
-// Bouton Suivi //
-$("#flip-1").on("change", function() {
- navigation = !navigation;
-});
-
-$("#centerbtn").click(function()
-{
-	centrer();
-});
-
-// Rafraichissement Alertes //
-setInterval(load_alertes,60000);
-
 
 // INSCRIPTION / CREATION COMPTE //
 $("#btn-inscr").click(function ()

@@ -12,8 +12,8 @@ var main= $("#main");
 var param = $("#param");
 var populated = false;
 var trajetencours = false;
-var pageheight = window.screen.availHeight;
-var pagewidth = window.screen.availWidth;
+var mapsize;
+var contentsize;
 type_alerte = null;
 
 /*****************************************************************************************/
@@ -26,7 +26,12 @@ type_alerte = null;
 trajet.hide();
 alertes.hide();
 populateparams();
-createCookie("types", "Accident,Bouchon,Radar,Police,Travaux");
+
+if(getCookie("types") == null)
+{
+	createCookie("types", "Accident,Bouchon,Radar,Police,Travaux");
+}
+
 
 // RAFRAICHISSEMENT DE LA PAGE //
 
@@ -47,7 +52,9 @@ createCookie("types", "Accident,Bouchon,Radar,Police,Travaux");
 			changeHash: false,
 			reverse: false,
 			showLoadMsg: false
-    });
+   		});
+
+		contentsize = $("div[data-role='page']").height();
 
 	}
 
@@ -76,7 +83,6 @@ $("#btn-rtr").click(function ()
         reverse: false,
         showLoadMsg: false
     });
-    console.log("tested2");
 });
 
 $("#btn-crea").click(function ()
@@ -174,7 +180,8 @@ $("#parametres").click(function ()
     showLoadMsg: false
 	});
 
-	$("div[data-role='page']").height(window.screen.availHeight);
+	$("div[data-role='page']").height(mapsize);
+
 
 });
 
@@ -256,6 +263,10 @@ $("#valid-param").click(function ()
 	{
 		createCookie("types", types);
 	}
+	else
+	{
+		createCookie("types", null);
+	}
 
 	$(':mobile-pagecontainer').pagecontainer('change', '#main', {
     transition: 'flip',
@@ -263,6 +274,10 @@ $("#valid-param").click(function ()
     reverse: false,
     showLoadMsg: false
 	});
+
+	$("#carte").height(mapsize);
+	$("div[data-role='content']").height(contentsize);
+	// setTimeout(resize, 2000);
 });
 
 
@@ -438,7 +453,6 @@ $("#btn-auth").click(function ()
 			}
 			else if(result.message.search("SQLSTATE") > 0 )
 			{
-				alert("test");
 				$("#errormsg").html("");
 				$("#errormsg").append("Désolé, nous avons un problème avec la base de données ! Il sera résolu dans les plus brefs délais ...");
 				$(':mobile-pagecontainer').pagecontainer('change', '#erreur-auth',
@@ -454,7 +468,7 @@ $("#btn-auth").click(function ()
 	}
 
 
-// Design //
+// Dimensionnement //
 
 function resize()
 {
@@ -463,6 +477,7 @@ function resize()
 	var sizemap = windowh - header;
 	$("div[data-role='page']").height(window.screen.availHeight);
 	$("#carte").height(sizemap);
+	mapsize = sizemap;
 }
 
 

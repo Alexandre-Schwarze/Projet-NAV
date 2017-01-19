@@ -37,27 +37,10 @@ function calculate(dest){
 	}
 };
 
-function placeAlerte(latitude1, longitude1) {
-	$.post("connectBDD.php", {
-		requete: "insertAlert",
-		idUser: "1",
-		alert: "1",
-		latitude: latitude1,
-		longitude: longitude1
-	}, function(result) {
-		if (result == "ok") {
-			alert("Alerte placée !");
-		} else {
-			alert("Erreur d'insertion !");
-		}
-	});
-}
-
 function centrer() {
 	latlng = new google.maps.LatLng(latitude, longitude);
 	carte.setCenter(latlng);
 	carte.setZoom(16);
-	//navigation = false;
 }
 
 function genererMap() {
@@ -100,7 +83,7 @@ function geo() {
 			{ enableHighAccuracy:true, maximumAge:5000}
 			);
 	} else {
-		alert('Erreur : Pas de support de la géolocalisation dans votre navigateur');
+		alert("Veuillez activer la géolocalisation de votre support !");
 	}
 }
 
@@ -119,7 +102,7 @@ function geo_ok(position) {
 }
 
 function geo_error(error) {
-	alert(error.message+" / "+error.code);  
+	alert("Veuillez activer la géolocalisation de votre support !");  
 }
 
 function load_alertes() {
@@ -138,7 +121,6 @@ function load_alertes() {
 				var latlngX = new google.maps.LatLng(result[i].latitude, result[i].longitude);
 				var marker1 = new google.maps.Marker({position: latlngX });
 				marker1.setIcon('themes/images/' + result[i].icon);
-				console.log(table_alertes);
 				if (table_alertes[0] != null) {
 					for (var x = 0; x < table_alertes.length; x++) {
 						if (result[i].nom == table_alertes[x]) {

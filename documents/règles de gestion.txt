@@ -1,18 +1,11 @@
-Règles de gestion
+RÃ¨gles de gestion
 
 
-- 	L'utilisateur doit être authentifié pour utiliser l'application
--	Un trajet présentant des ralentissements doit changer son code couleur 
--	Un utilisateur doit s’afficher sur l’interface trajet/carte des autres utilisateurs à condition d’être dans un rayon de x km de ceux-ci.
--	Si l'application ne trouve pas les coordonnées du point de départ ou de la destination, il signale itinéraire introuvable
--	L'application doit informer en temps réel des problèmes de connectivité réseau
--	Lors de la perte de connexion réseau, l'application affiche seulement la carte déjà mise en cache
--	L'application met en cache la carte selon : 
-							- le trajet qu'il effectue actuellement
-							- 
--	A chaque mise à jour de la vue d'un utilisateur, l'application doit mettre à jour les vues des utilsateurs proches 
--	Lorsque l'utilisateur place une alerte, elle apparaît sur la position courante de ce dernier.
--	Les alertes une fois placées, ont une durée de vie limitée, et sont maintenue sur la carte par le battement de coeur.
--	Les alertes s'affichent dans un périmètre définie autour de l'utilisateur.
--	Une alerte est notifiée seulement si elle est à une distance définie de l'utilisateur et sur la même rue.
--	Si une alerte du même type qu'une première est placée à proximité de cette dernière, les deux sont regroupées pour n'en afficher qu'une.
+- 	L'utilisateur doit Ãªtre authentifiÃ© pour utiliser l'application
+-	Si l'application ne trouve pas les coordonnÃ©es du point de dÃ©part ou de la destination, il signale itinÃ©raire introuvable
+-	A chaque mise Ã  jour de la vue d'un utilisateur, l'application doit mettre Ã  jour les vues des utilsateurs proches 
+-	Lorsque l'utilisateur place une alerte, elle apparaÃ®t sur la position courante de ce dernier.
+-	Les alertes une fois placÃ©es, ont une durÃ©e de vie limitÃ©e, et sont maintenue sur la carte par le battement de coeur.
+-	Les alertes s'affichent dans un pÃ©rimÃ¨tre dÃ©finie autour de l'utilisateur.
+-	Une alerte est notifiÃ©e seulement si elle est Ã  une distance dÃ©finie de l'utilisateur et sur la mÃªme rue.
+-	Si une alerte du mÃªme type qu'une premiÃ¨re est placÃ©e Ã  proximitÃ© de cette derniÃ¨re, les deux sont regroupÃ©es pour n'en afficher qu'une.
